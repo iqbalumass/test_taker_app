@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -9,6 +10,22 @@ const Login = () => {
         if (username === 'Student' && password === 'umassd') {
             // Perform login logic here
             console.log('Login successful');
+            const history = useHistory();
+
+            // ...
+
+            const handleLoginSuccess = () => {
+                if (username === 'Student' && password === 'umassd') {
+                    // Perform login logic here
+                    console.log('Login successful');
+                    const history = useHistory();
+                    history.push('/loginsuccess');
+                } else {
+                    setErrorMessage('Wrong credentials. Please try again.');
+                }
+            };
+
+            // ...
         } else {
             setErrorMessage('Wrong credentials. Please try again.');
         }
