@@ -1,35 +1,27 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Use useNavigate instead of useHistory
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState(''); 
+    
+    const navigate = useNavigate(); 
 
     const handleLogin = () => {
         if (username === 'Student' && password === 'umassd') {
-            // Perform login logic here
+            // Perform login logic here 
             console.log('Login successful');
-            const history = useHistory();
-
-            // ...
-
-            const handleLoginSuccess = () => {
-                if (username === 'Student' && password === 'umassd') {
-                    // Perform login logic here
-                    console.log('Login successful');
-                    const history = useHistory();
-                    history.push('/loginsuccess');
-                } else {
-                    setErrorMessage('Wrong credentials. Please try again.');
-                }
-            };
-
-            // ...
+            setSuccessMessage('Login successful');
+            setTimeout(() => {
+                navigate('/subjectList'); 
+            }, 2000); // Redirect after 2 seconds
         } else {
             setErrorMessage('Wrong credentials. Please try again.');
         }
     };
+
 
     return (
         <div>
@@ -50,7 +42,8 @@ const Login = () => {
             <br />
             <button onClick={handleLogin}>Login</button>
             <br />
-            <p>{errorMessage}</p>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            {successMessage && <div style={{ color: 'green', fontSize: '18px', marginTop: '10px' }}>{successMessage}</div>}
             <button>Forgot Password</button>
         </div>
     );
