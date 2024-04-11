@@ -1,10 +1,13 @@
 import React from 'react';
+import {useNavigate } from 'react-router-dom';
 import './SubjectList.css'; // Import the CSS file
 
 const SubjectList = () => {
   const subjects = ['Math', 'Science', 'History'];
+  const navigate = useNavigate();
 
   const handleSubjectClick = (subject) => {
+    navigate(`/quiz/${subject}`);
     console.log(`Navigate to quiz for ${subject}`);
   };
 
