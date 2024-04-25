@@ -4,11 +4,12 @@ import { useParams } from 'react-router-dom';
 import './quiz.css';
 import { useNavigate } from 'react-router-dom';
 
-
+let nextId=0;
 const Quiz = () => {
   const { subject } = useParams();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [Actualanswer,setActualanswer]=useState([]);
   const [score, setScore] = useState(0);
   const [isQuizFinished, setIsQuizFinished] = useState(false);
   const totalTime = 10 * 60; // 10 minutes for quiz
@@ -35,6 +36,10 @@ const Quiz = () => {
   const handleSubmitAnswer = () => {
     // Check the answer only if one is selected
     if (selectedAnswer) {
+      setActualanswer([
+        ...Actualanswer,
+        { id: nextId++, name: selectedAnswer }
+      ]);
       if (selectedAnswer === questions[subject][currentQuestionIndex].correctAnswer) {
         setScore(score + 1);
       }
@@ -48,13 +53,26 @@ const Quiz = () => {
       setSelectedAnswer(null); 
     }
   };
-
-  if (isQuizFinished) {
+   
+ if (isQuizFinished) {
     return (
       <div>
         <h1>Quiz Finished!</h1>
         <p>Your score is {score} out of {questions[subject].length}.</p>
         <button onClick={() => navigate('/subjectList')}>Return to Subject List</button>
+        <h1>Review Your answers:</h1>
+        <div className='grid-container'>
+         <div className='grid-item'>
+          { questions[subject].map(item => (
+        <h6 key={item.Questionnum}>Correct Answer for Question {item.Questionnum} is {item.correctAnswer}</h6>
+      ))}
+        </div>
+        <div className='grid-item'>
+        {Actualanswer.map(x => (
+          <h6 key={x.id}>Selected Answer for Question {x.id+1} is {x.name}</h6>
+        ))}
+        </div>
+       </div>
       </div>
     );
   }
