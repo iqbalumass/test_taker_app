@@ -1,0 +1,83 @@
+{
+  "id": "f5e66612-b439-4ef5-b7a4-8f4e0d64b248",
+  "version": "2.0",
+  "name": "Test Taker App Login",
+  "url": "https://special-space-xylophone-4jjxg4v9jjv53jwpg-3000.app.github.dev",
+  "tests": [{
+    "id": "bcd9deff-0634-4b7d-8bbb-e30c8dca7956",
+    "name": "Failed Login",
+    "commands": [{
+      "id": "0987ca77-8fdf-4acd-a3f9-a2ca2a6043c0",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4d0e1d41-159e-4865-88f4-c90880dee4c0",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x832",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "827b2535-4c31-4cda-a894-362d5ef8e889",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(2)",
+      "targets": [
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a09d65a3-d702-4a91-9024-dba232417e87",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(2)",
+      "targets": [
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@value='Student2']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Student2"
+    }, {
+      "id": "c787541c-63c6-4ef9-9874-98e16ee064d3",
+      "comment": "",
+      "command": "type",
+      "target": "css=input:nth-child(5)",
+      "targets": [
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@value='umassd']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/input[2]", "xpath:idRelative"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "umassd"
+    }, {
+      "id": "db5ddb85-4f31-40d5-a9a2-090614daf8c3",
+      "comment": "",
+      "command": "click",
+      "target": "css=button:nth-child(8)",
+      "targets": [
+        ["css=button:nth-child(8)", "css:finder"],
+        ["xpath=//div[@id='root']/div/div/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "87d9ab59-827f-4bd0-91eb-e59eb79147be",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["bcd9deff-0634-4b7d-8bbb-e30c8dca7956"]
+  }],
+  "urls": ["https://special-space-xylophone-4jjxg4v9jjv53jwpg-3000.app.github.dev/"],
+  "plugins": []
+}
