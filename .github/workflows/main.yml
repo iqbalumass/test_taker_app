@@ -30,12 +30,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Zip files
-        run: zip -r deployment-package.zip ./*
+      - name: Zip and compress files
+        run: |
+          zip -r deployment-package.zip ./*
+          gzip -9 -c deployment-package.zip > deployment-package.gz
 
       - name: Deploy to Lambda
         run: |
-          aws lambda update-function-code --function-name testTakerApp --zip-file fileb://deployment-package.zip
+          aws lambda update-function-code --function-name testTakerApp --zip-file fileb://deployment-package.gz
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
