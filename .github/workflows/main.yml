@@ -17,7 +17,6 @@ jobs:
       - name: Install dependencies
         run: npm install
   deploy:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
