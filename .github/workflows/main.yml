@@ -36,9 +36,12 @@ jobs:
       - name: Compress ZIP file with Gzip
         run: gzip -9 -c deployment-package.zip > deployment-package.gz
       
+      - name: Uncompress ZIP file
+        run: gunzip -k deployment-package.gz
+      
       - name: Deploy to Lambda
         run: |
-          aws lambda update-function-code --function-name testTakerApp --zip-file fileb://deployment-package.gz
+          aws lambda update-function-code --function-name testTakerApp --zip-file fileb://deployment-package.gip
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
